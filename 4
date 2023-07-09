@@ -1,0 +1,31 @@
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func printTextWithAsterisks(text string) {
+	words := strings.Split(text, " ")
+	maxLength := 0
+
+	// Находим максимальную длину слова
+	for _, word := range words {
+		if len(word) > maxLength {
+			maxLength = len(word)
+		}
+	}
+
+	fmt.Println(strings.Repeat("*", maxLength+4))
+
+	for _, word := range words {
+		fmt.Printf("* %s%s *\n", word, strings.Repeat(" ", maxLength-len(word)))
+	}
+
+	fmt.Println(strings.Repeat("*", maxLength+4))
+}
+
+func main() {
+	text := "Привет, мир!"
+	printTextWithAsterisks(text)
+}
